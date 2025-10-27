@@ -1,0 +1,11 @@
+module mux2x1(
+input in0, in1,
+input sel,
+output out
+    );
+    //In1 and In2 are input
+    //To select these inputs sel is selectline
+    //Which will bring either In1 or In2 at Output
+    
+    assign out = sel ? in1 : in0; 
+endmodule
