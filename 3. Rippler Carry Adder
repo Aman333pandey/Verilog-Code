@@ -1,0 +1,19 @@
+module Full_Adder(
+input a,b,c,
+output sum,carry
+    );
+    assign sum = a ^ b ^ c;
+    assign carry = (a & b) | ( b & c) | (a & c);
+endmodule
+
+module four_bit_Rippler_Adder(
+    input [3:0] a,b,
+    input c,
+    output [3:0] sum,
+    output carryout);
+    wire [2:0] carry;
+    Full_Adder dut0(a[0], b[0], c, sum[0], carry[0]);
+    Full_Adder dut1(a[1], b[1], carry[0], sum[1], carry[1]);
+    Full_Adder dut2(a[2], b[2], carry[1], sum[2], carry[2]);
+    Full_Adder dut3(a[3], b[3], carry[2], sum[3], carryout);
+endmodule
